@@ -1,4 +1,4 @@
-name: CI Hello World
+name: CI Pre-commit checks
 
 on:
   pull_request:
@@ -17,5 +17,5 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v7
 
-      - name: Run main script
-        run: uv run main.py
+      - name: Pre-commit
+        run: uv run pre-commit run --all-files
