@@ -1,0 +1,7 @@
+[project]
+name = "wedding-website"
+version = "0.1.0"
+description = "L&I project: Web development, Github actions. Website for wedding."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []
