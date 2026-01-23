@@ -4,9 +4,10 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
-  build:
+  ci_hello_world:
     runs-on: ubuntu-latest
 
     steps:
