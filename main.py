@@ -1,7 +1,11 @@
 import logging
 
+logging.basicConfig(level=logging.INFO)
+
+
 def main():
-    logging.warning("Hello from wedding-website!")
+    logging.info("Hello from wedding-website!")
+
 
 if __name__ == "__main__":
     main()

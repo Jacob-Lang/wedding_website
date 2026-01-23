@@ -4,4 +4,6 @@ version = "0.1.0"
 description = "L&I project: Web development, Github actions. Website for wedding."
 readme = "README.md"
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "ty>=0.0.13",
+]
