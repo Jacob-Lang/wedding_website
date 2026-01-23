@@ -1,0 +1,42 @@
+repos:
+# --- 1. General Repository Hygiene (from pre-commit-hooks repo) ---
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v6.0.0
+  hooks:
+    # Remove excessive trailing whitespace
+    - id: trailing-whitespace
+    # Ensure files end with a single newline
+    - id: end-of-file-fixer
+    # Ensure YAML, JSON, and TOML files are validly formatted
+    - id: check-yaml
+    - id: check-json
+    - id: check-toml
+    # Prevents committing files that still have git conflict markers
+    - id: check-merge-conflict
+
+# --- 2. Code Formatting & Linting (Ruff - from Astral) ---
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.14.14 # Check GitHub for the latest version tag
+  hooks:
+    # The formatter ensures consistent style
+    - id: ruff-format
+    # The linter (with --fix) catches errors and auto-corrects many issues
+    - id: ruff-check
+      args: [--fix]
+
+# --- 3. Package Management (uv - from Astral) ---
+- repo: https://github.com/astral-sh/uv-pre-commit
+  rev: 0.9.26 # Check GitHub for the latest version tag
+  hooks:
+    # Keeps the lock file in sync with pyproject.toml or requirements.*
+    - id: uv-lock
+
+# --- 4. Type Checking & Security Scanning (Local Hooks for ty & Bandit) ---
+# These assume 'ty' is installed in your project's virtual environment
+- repo: local
+  hooks:
+    - id: ty-check
+      name: Run ty type checker
+      entry: ty check
+      language: system
+      types: [python]

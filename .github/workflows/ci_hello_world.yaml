@@ -1,4 +1,4 @@
-name: CI Hello World
+name: CI Pre-commit checks
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  ci_hello_world:
+  pre-commit:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,5 +17,8 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v7
 
-      - name: Run main script
-        run: uv run main.py
+      - name: Install pre-commit
+        run: pip install pre-commit
+
+      - name: Pre-commit
+        run: uv run pre-commit run --all-files
