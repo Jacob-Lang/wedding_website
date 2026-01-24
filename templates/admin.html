@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Guest List RSVP Tracker</h1>
+<p><a href="/">← Back to Site</a></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Attending?</th>
+            <th>Meal Choice</th>
+            <th>Song Request</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for guest in guests %}
+        <tr>
+            <td>{{ guest.name }}</td>
+            <td class="attending-{{ guest.attending }}">
+                {{ guest.attending | capitalize }}
+            </td>
+            <td>{{ guest.meal }}</td>
+            <td>{{ guest.song }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

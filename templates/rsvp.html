@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>RSVP</h2>
+<p>We can't wait to celebrate with you! Please let us know if you can make it.</p>
+
+<form method="POST">
+    <label for="name">Your Full Name</label>
+    <input type="text" id="name" name="name" placeholder="Auntie May" required>
+
+    <label for="attending">Will you be attending?</label>
+    <select id="attending" name="attending">
+        <option value="yes">Yes, definitely!</option>
+        <option value="no">Sadly, no.</option>
+    </select>
+
+    <label>Main Course Preference</label>
+    <label><input type="radio" name="meal" value="Beef"> Roast Beef</label>
+    <label><input type="radio" name="meal" value="Fish"> Grilled Salmon</label>
+    <label><input type="radio" name="meal" value="Veg"> Mushroom Risotto</label>
+
+    <label for="song">Song Request</label>
+    <input type="text" id="song" name="song" placeholder="The song that gets you dancing">
+
+    <button type="submit" class="button">Submit Response</button>
+</form>
+{% endblock %}
