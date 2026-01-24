@@ -1,40 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Admin - Guest List</title>
-    <style>
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
-        th { background-color: #f2f2f2; }
-        .attending-yes { color: green; font-weight: bold; }
-        .attending-no { color: red; }
-    </style>
-</head>
-<body>
-    <h1>Guest List RSVP Tracker</h1>
-    <p><a href="/">← Back to Site</a></p>
+{% extends "layout.html" %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Attending?</th>
-                <th>Meal Choice</th>
-                <th>Song Request</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for guest in guests %}
-            <tr>
-                <td>{{ guest.name }}</td>
-                <td class="attending-{{ guest.attending }}">
-                    {{ guest.attending | capitalize }}
-                </td>
-                <td>{{ guest.meal }}</td>
-                <td>{{ guest.song }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</body>
-</html>
+{% block content %}
+<h1>Guest List RSVP Tracker</h1>
+<p><a href="/">← Back to Site</a></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Attending?</th>
+            <th>Meal Choice</th>
+            <th>Song Request</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for guest in guests %}
+        <tr>
+            <td>{{ guest.name }}</td>
+            <td class="attending-{{ guest.attending }}">
+                {{ guest.attending | capitalize }}
+            </td>
+            <td>{{ guest.meal }}</td>
+            <td>{{ guest.song }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

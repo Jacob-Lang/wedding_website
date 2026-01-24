@@ -1,18 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login - Wedding</title>
-</head>
-<body>
-    <h2>Welcome! Please enter the password from your invitation:</h2>
+{% extends "layout.html" %}
 
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
+{% block content %}
+<h2>Welcome! Please enter the password from your invitation:</h2>
 
-    <form method="post">
-        <input type="password" name="password" placeholder="Enter Password">
-        <button type="submit">Enter Site</button>
-    </form>
-</body>
-</html>
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+
+<form method="post">
+    <input type="password" name="password" placeholder="Enter Password">
+    <button type="submit">Enter Site</button>
+</form>
+{% endblock %}

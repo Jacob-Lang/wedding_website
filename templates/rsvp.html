@@ -1,20 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>RSVP</h2>
+<p>We can't wait to celebrate with you! Please let us know if you can make it.</p>
+
 <form method="POST">
-    <label>Name:</label><br>
-    <input type="text" name="name" required><br><br>
+    <label for="name">Your Full Name</label>
+    <input type="text" id="name" name="name" placeholder="Auntie May" required>
 
-    <label>Will you be attending?</label><br>
-    <select name="attending">
-        <option value="yes">Yes, with bells on!</option>
+    <label for="attending">Will you be attending?</label>
+    <select id="attending" name="attending">
+        <option value="yes">Yes, definitely!</option>
         <option value="no">Sadly, no.</option>
-    </select><br><br>
+    </select>
 
-    <label>Meal Choice:</label><br>
-    <input type="radio" name="meal" value="Beef"> Beef
-    <input type="radio" name="meal" value="Fish"> Fish
-    <input type="radio" name="meal" value="Veg"> Veggie<br><br>
+    <label>Main Course Preference</label>
+    <label><input type="radio" name="meal" value="Beef"> Roast Beef</label>
+    <label><input type="radio" name="meal" value="Fish"> Grilled Salmon</label>
+    <label><input type="radio" name="meal" value="Veg"> Mushroom Risotto</label>
 
-    <label>Song Request:</label><br>
-    <input type="text" name="song"><br><br>
+    <label for="song">Song Request</label>
+    <input type="text" id="song" name="song" placeholder="The song that gets you dancing">
 
-    <button type="submit">Submit RSVP</button>
+    <button type="submit" class="button">Submit Response</button>
 </form>
+{% endblock %}
