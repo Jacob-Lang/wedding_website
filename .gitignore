@@ -8,3 +8,8 @@ wheels/
 
 # Virtual environments
 .venv
+
+# ignore .env variables (contains secrets)
+.env
+# ignore database files - would put private data into git and require commits whenever a guest inputs data
+*.db
