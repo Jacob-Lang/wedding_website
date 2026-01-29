@@ -2,14 +2,16 @@ import os
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template, request, redirect, url_for, session
-
+import csv
+import io
+from flask import make_response
 
 load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY")
 PASSWORD = os.environ.get("PASSWORD")
-
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///wedding.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -45,12 +47,25 @@ def login():
             return redirect(url_for("home"))
         else:
             error = "Invalid password. Please try again!"
-    return render_template("login.html", error=error)
+    return render_template("login.html", error=error, admin_mode=False)
+
+
+@app.route("/admin-login", methods=["GET", "POST"])
+def admin_login():
+    error = None
+    if request.method == "POST":
+        if request.form["password"] == ADMIN_PASSWORD:
+            session["logged_in"] = True
+            session["is_admin"] = True
+            return redirect(url_for("home"))
+        else:
+            error = "Invalid password. Please try again!"
+    return render_template("login.html", error=error, admin_mode=True)
 
 
 @app.route("/logout")
 def logout():
-    session.pop("logged_in", None)
+    session.clear()
     return redirect(url_for("login"))
 
 
@@ -76,11 +91,39 @@ def rsvp():
 
 @app.route("/admin")
 def admin():
-    if not session.get("logged_in"):
-        return redirect(url_for("login"))
+    if not session.get("is_admin"):
+        return redirect(url_for("admin_login"))
 
     all_guests = Guest.query.all()
     return render_template("admin.html", guests=all_guests)
+
+
+@app.route("/admin/export")
+def export_csv():
+    # 1. Security check - only admins can export!
+    if not session.get("is_admin"):
+        return redirect(url_for("admin_login"))
+
+    # 2. Get the data
+    guests = Guest.query.all()
+
+    # 3. Create an "in-memory" file
+    output = io.StringIO()
+    writer = csv.writer(output)
+
+    # 4. Write the header row
+    writer.writerow(["Name", "Attending", "Meal", "Song Request"])
+
+    # 5. Write the data rows
+    for guest in guests:
+        writer.writerow([guest.name, guest.attending, guest.meal, guest.song])
+
+    # 6. Create the response
+    response = make_response(output.getvalue())
+    response.headers["Content-Disposition"] = "attachment; filename=wedding_rsvps.csv"
+    response.headers["Content-type"] = "text/csv"
+
+    return response
 
 
 if __name__ == "__main__":
