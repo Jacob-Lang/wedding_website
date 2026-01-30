@@ -1,0 +1,12 @@
+__pycache__
+*.pyc
+.env
+wedding.db
+.git
+
+notes
+
+.ruff_cache
+.github
+.pre-commit-config.yaml
+README.md
