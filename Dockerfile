@@ -1,24 +1,21 @@
-# Use the official uv image for a high-speed build
 FROM ghcr.io/astral-sh/uv:python3.11-alpine
 
-# Set the working directory
 WORKDIR /app
 
-# Enable bytecode compilation for faster startup
+# Setup the environment
+ENV PATH="/app/.venv/bin:$PATH"
 ENV UV_COMPILE_BYTECODE=1
 
-# Copy only the configuration files first to cache dependencies
+# Install dependencies
 COPY pyproject.toml uv.lock ./
-
-# Install the project dependencies (this creates a virtual environment)
 RUN uv sync --frozen --no-dev
+RUN uv pip install gunicorn
 
-# Copy the rest of your app code
+# CREATE THE DATA FOLDER
+RUN mkdir -p /app/data
+
+# Copy the rest of the code
 COPY . .
 
-# Ensure the virtual environment's bin is in the PATH
-ENV PATH="/app/.venv/bin:$PATH"
-
-# Run the app with Gunicorn
+# Run the app
 CMD ["uv", "run", "gunicorn", "--bind", "0.0.0.0:8080", "app:app"]
-# CMD ["ls"]

@@ -1,12 +1,14 @@
-__pycache__
+__pycache__/
 *.pyc
 .env
-wedding.db
+.env.docker
 .git
 
-notes
+notes/
 
-.ruff_cache
-.github
+.ruff_cache/
+.github/
 .pre-commit-config.yaml
 README.md
+
+instance/
