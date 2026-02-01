@@ -4,11 +4,11 @@ __pycache__
 .env.docker
 .git
 
-notes
+notes/
 
 .ruff_cache
 .github
 .pre-commit-config.yaml
 README.md
 
-instance
+instance/
