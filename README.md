@@ -32,27 +32,4 @@ with app.app_context():
 
 # Docker
 
-build
-docker build -t wedding-app .
-
-run
-docker run -d -p 8000:8080 \
-  --env-file .env.docker \
-  -v $(pwd)/instance:/app/data \
-  --name wedding-prod wedding-app
-
--d
-By default, when you run docker run, your terminal "attaches" to the container. You see all the logs, and if you close the terminal or press Ctrl + C, the container stops.
-
-Why you use Detached Mode (-d):
-When you're running a web server like your wedding site, you want it to behave like a background service.
-
-The Terminal is Freed Up: You get your command prompt back immediately after the container starts.
-
-Independent Life: The container keeps running even if you close the terminal window or log out of your computer.
-
-Background Service: This is the standard way to run databases, web servers, and "always-on" tools.
-)
-
-
 http://localhost:8000
