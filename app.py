@@ -13,7 +13,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 PASSWORD = os.environ.get("PASSWORD")
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///wedding.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{os.getenv('DATABASE_URL')}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 

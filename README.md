@@ -36,8 +36,12 @@ build
 docker build -t wedding-app .
 
 run
-docker run -p 8000:8080 -v $(pwd)/instance/wedding.db:/app/wedding.db --env-file .env --name wedding-prod wedding-app
-(add -d for detached mode
+docker run -d -p 8000:8080 \
+  --env-file .env.docker \
+  -v $(pwd)/instance:/app/data \
+  --name wedding-prod wedding-app
+
+-d
 By default, when you run docker run, your terminal "attaches" to the container. You see all the logs, and if you close the terminal or press Ctrl + C, the container stops.
 
 Why you use Detached Mode (-d):
