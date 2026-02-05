@@ -1,35 +1,62 @@
-## Setup
+# 💍 Wedding Website
 
-To start the project
-`uv init --python 3.14`
+I'm getting married! Let's build a website from scratch.
 
-Dev - reqs
-uv, pre-commit, python 3.14, brew install docker-desktop, pip install gunicorn,
+A containerized Flask application designed to manage wedding guest lists and RSVPs. This project demonstrates a modern Python development workflow using **uv**, **Docker**, and **Automated Task Management**.
 
+## 🚀 Technical Highlights
+* **Backend:** Flask (Python) with SQLAlchemy.
+* **Database:** SQLite (Relational storage with volume persistence).
+* **Environment Management:** Managed via `uv` for lightning-fast, reproducible builds.
+* **Containerization:** Fully Dockerized with optimized `.dockerignore` and multi-environment `.env` support.
+* **Automation:** Comprehensive `Makefile` for streamlined development and deployment.
 
-Running the website
-`uv run python app.py`
-Go to localhost link
+---
 
+## 🛠 Prerequisites
+* [uv](https://docs.astral.sh/uv/) (Python package manager)
+* Docker & Docker Compose
+* Make (Standard on macOS/Linux)
 
-Query the DB.
-As you develop, you might want to see or reset your data. Here is how you "talk" to your database manually in the terminal:
-Open your terminal in the project folder.
-Type `python` in the shell.
-Run these commands:
+---
+
+## 🏃‍♂️ Getting Started
+
+### 1. Project Initialization
+The setup command handles dependency installation and prepares the local environment:
+```bash
+make setup
 ```
-from app import app, db, Guest
 
-with app.app_context():
-    # 1. See how many guests are in the DB
-    print(Guest.query.count())
-
-    # 2. Delete everyone (if you want to start fresh)
-    # Guest.query.delete()
-    # db.session.commit()
+### 2. Local Development
+Run the application in a local virtual environment for rapid iteration:
+```bash
+make local-run
 ```
+Access the UI at http://127.0.0.1:5000
 
+### 3. Production Simulation (Docker)
+Build and run the containerized version to test production behavior:
 
-# Docker
+```bash
+make restart
+make logs
+```
+Access the containerized app at http://localhost:8000
 
-http://localhost:8000
+---
+
+## Project Architecture
+Plaintext
+├── app.py              # Main application logic
+├── Makefile            # Project automation shortcuts
+├── Dockerfile          # Container specification
+├── instance/           # Local SQLite storage (Volume mounted)
+├── templates/          # Jinja2 HTML templates
+└── pyproject.toml      # Project metadata and dependencies
+🔒 Security & Persistence
+Data Persistence: The SQLite database is mapped to a local volume, ensuring guest data survives container restarts and upgrades.
+
+Secret Management: Utilizes decoupled .env files for local vs. containerized secrets.
+
+CSRF Protection: Integrated session signing via Flask Secret Keys.
