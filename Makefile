@@ -4,7 +4,12 @@ CONTAINER_NAME = wedding-prod
 
 # --- Targets ---
 
-.PHONY: build run stop restart logs dev clean
+.PHONY: setup build run stop restart logs local-run clean
+
+setup:
+	uv sync
+	mkdir -p instance
+	@echo "Action Required: Copy .env.example to .env and .env.docker.example to .env.docker, generate secret key and choose passwords"
 
 # Build the Docker image
 build:
