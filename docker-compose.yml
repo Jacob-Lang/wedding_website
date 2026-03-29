@@ -1,0 +1,10 @@
+services:
+  wedding-app:
+    build: .
+    restart: always
+    ports:
+      - "8000:8080"
+    env_file:
+      - .env.docker
+    volumes:
+      - ./instance:/app/instance  # This saves your database if the container restarts
