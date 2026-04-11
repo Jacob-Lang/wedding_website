@@ -1,0 +1,10 @@
+{
+  "header_date_location": "Day Date Month Year, Town",
+  "wedding_date": "Month Day, Year",
+  "venue_name": "Your Venue, County",
+  "meal_options": [
+    {"value": "option1", "label": "First Meal Option"},
+    {"value": "option2", "label": "Second Meal Option"},
+    {"value": "option3", "label": "Third Meal Option"}
+  ]
+}

@@ -1,4 +1,5 @@
 import os
+import json
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template, request, redirect, url_for, session
@@ -8,7 +9,17 @@ from flask import make_response
 
 load_dotenv()
 
+with open("wedding_config.json") as f:
+    WEDDING_CONFIG = json.load(f)
+
 app = Flask(__name__)
+
+
+@app.context_processor
+def inject_wedding_config():
+    return {"wedding": WEDDING_CONFIG}
+
+
 app.secret_key = os.environ.get("SECRET_KEY")
 PASSWORD = os.environ.get("PASSWORD")
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")

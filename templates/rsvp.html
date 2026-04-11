@@ -15,9 +15,9 @@
     </select>
 
     <label>Main Course Preference</label>
-    <label><input type="radio" name="meal" value="Beef"> Roast Beef</label>
-    <label><input type="radio" name="meal" value="Fish"> Grilled Salmon</label>
-    <label><input type="radio" name="meal" value="Veg"> Mushroom Risotto</label>
+    {% for option in wedding.meal_options %}
+    <label><input type="radio" name="meal" value="{{ option.value }}"> {{ option.label }}</label>
+    {% endfor %}
 
     <label for="song">Song Request</label>
     <input type="text" id="song" name="song" placeholder="The song that gets you dancing">
