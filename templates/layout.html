@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Wedding</title>
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <header>
@@ -27,7 +27,9 @@
                 <a href="{{ url_for('logout') }}">Logout</a>
             {% endif %}
         </nav>
+
         <h1>Our Wedding</h1>
+        <p class="date-location">Monday 1st January 2026, Faketown</p>
     </header>
 
     <main>
@@ -35,7 +37,7 @@
     </main>
 
     <footer>
-        <p>Built with ❤️ and Python</p>
+        <p>Built by Jacob - if something's not working them give me a shout!/p>
     </footer>
 </body>
 </html>
