@@ -9,7 +9,6 @@ CONTAINER_NAME = wedding-prod
 setup:
 	uv sync
 	mkdir -p data
-	flask db init
 	@echo "Action Required: Copy .env.example to .env and .env.docker.example to .env.docker, generate secret key and choose passwords"
 
 # Pull recent code changes and add
