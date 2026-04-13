@@ -40,6 +40,7 @@ repos:
       entry: ty check
       language: system
       types: [python]
+      exclude: ^migrations/
 
 # --- 5. Don't commit to main ---
 - repo: https://github.com/pre-commit/pre-commit-hooks

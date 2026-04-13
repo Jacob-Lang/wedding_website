@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>The Details</h2>
+<p>We can't wait to celebrate with you! Please let us know if you can make it.</p>
+
+<p><strong>Date:</strong>  {{ wedding.wedding_date }}</p>
+
+<p>
+<strong>Location:</strong>
+<ul>
+    <li><strong>Ceremony:</strong> {{ wedding.ceremony_location }}</li>
+    <li><strong>Reception:</strong> {{ wedding.reception_location }}</li>
+</ul>
+</p>
+
+<p>
+<strong>Schedule:</strong>
+<ul>
+{% for event in wedding.schedule %}
+    <li><strong>{{ event.time }}:</strong> {{ event.description }}</li>
+{% endfor %}
+</ul>
+</p>
+
+<p>
+<strong>Additional info:</strong><br>
+{{ wedding.additional_info }}
+</p>
+
+{% endblock %}

@@ -18,7 +18,7 @@
             <th>Name</th>
             <th>Attending?</th>
             <th>Meal Choice</th>
-            <th>Song Request</th>
+            <th>Dietary Requirements</th>
         </tr>
     </thead>
     <tbody>
@@ -29,7 +29,7 @@
                 {{ guest.attending | capitalize }}
             </td>
             <td>{{ guest.meal }}</td>
-            <td>{{ guest.song }}</td>
+            <td>{{ guest.dietary_requirements }}</td>
         </tr>
         {% endfor %}
     </tbody>
