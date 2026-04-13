@@ -3,7 +3,6 @@ import json
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template, request, redirect, url_for, session
-from flask_migrate import Migrate
 import csv
 import io
 from flask import make_response
@@ -28,7 +27,6 @@ ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
 app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{os.getenv('DATABASE_URL')}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)
 
 
 class Guest(db.Model):
