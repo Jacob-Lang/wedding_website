@@ -34,7 +34,7 @@ class Guest(db.Model):
     name = db.Column(db.String(100), nullable=False)
     attending = db.Column(db.String(10), nullable=False)
     meal = db.Column(db.String(100), nullable=False)
-    song = db.Column(db.String(100))
+    dietary_requirements = db.Column(db.String(100))
 
 
 # Create the database file (Run this once)
@@ -47,6 +47,13 @@ def home():
     if not session.get("logged_in"):
         return redirect(url_for("login"))
     return render_template("index.html")
+
+
+@app.route("/details")
+def details():
+    if not session.get("logged_in"):
+        return redirect(url_for("login"))
+    return render_template("details.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -91,7 +98,7 @@ def rsvp():
             name=request.form.get("name"),
             attending=request.form.get("attending"),
             meal=request.form.get("meal"),
-            song=request.form.get("song"),
+            dietary_requirements=request.form.get("dietary_requirements"),
         )
         db.session.add(new_guest)
         db.session.commit()

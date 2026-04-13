@@ -1,12 +1,15 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>Please come to our wedding!</h1>
+<p>Please come to our wedding!</p>
+<p class="date-location">{{ wedding.header_date_location }}</p>
+
 <img src="{{ url_for('static', filename='images/couple.jpeg') }}">
 
-<h3>The Details</h3>
-<ul>
-    <li><strong>When:</strong> {{ wedding.wedding_date }}</li>
-    <li><strong>Where:</strong> {{ wedding.venue_name }}</li>
-</ul>
+<!-- add link to details page here -->
+<a href="{{ url_for('details') }}">The Details</a>
+
+<!-- add link to rsvp page here -->
+<a href="{{ url_for('rsvp') }}">RSVP</a>
+
 {% endblock %}

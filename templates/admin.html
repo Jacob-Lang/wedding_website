@@ -1,8 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>Guest List RSVP Tracker</h1>
-<p><a href="/">← Back to Site</a></p>
+<h2>Guest List RSVP Tracker</h2>
 
 <div>
     <h2>RSVP Dashboard</h2>
@@ -18,7 +17,7 @@
             <th>Name</th>
             <th>Attending?</th>
             <th>Meal Choice</th>
-            <th>Song Request</th>
+            <th>Dietary Requirements</th>
         </tr>
     </thead>
     <tbody>
@@ -29,7 +28,7 @@
                 {{ guest.attending | capitalize }}
             </td>
             <td>{{ guest.meal }}</td>
-            <td>{{ guest.song }}</td>
+            <td>{{ guest.dietary_requirements }}</td>
         </tr>
         {% endfor %}
     </tbody>

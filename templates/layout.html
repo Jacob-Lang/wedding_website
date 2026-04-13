@@ -16,12 +16,14 @@
 
             {% if session.get('logged_in') and not session.get('is_admin')%}
                 <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('details') }}">Details</a>
                 <a href="{{ url_for('rsvp') }}">RSVP</a>
                 <a href="{{ url_for('logout') }}">Logout</a>
             {% endif %}
 
             {% if session.get('is_admin') %}
                 <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('details') }}">Details</a>
                 <a href="{{ url_for('rsvp') }}">RSVP</a>
                 <a href="{{ url_for('admin') }}">Guest List</a>
                 <a href="{{ url_for('logout') }}">Logout</a>
@@ -29,7 +31,6 @@
         </nav>
 
         <h1>Our Wedding</h1>
-        <p class="date-location">{{ wedding.header_date_location }}</p>
     </header>
 
     <main>
@@ -37,7 +38,7 @@
     </main>
 
     <footer>
-        <p>Built by Jacob - if something's not working them give me a shout!/p>
+        <p>Built by Jacob - if something's not working them give me a shout!</p>
     </footer>
 </body>
 </html>

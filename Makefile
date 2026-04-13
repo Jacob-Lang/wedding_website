@@ -4,7 +4,7 @@ CONTAINER_NAME = wedding-prod
 
 # --- Targets ---
 
-.PHONY: setup build run stop restart logs local-run clean
+.PHONY: setup deploy local-build-flask local-build-docker
 
 setup:
 	uv sync
