@@ -3,7 +3,12 @@
   "wedding_date": "Month Day, Year",
   "ceremony_location": "Your Ceremony Venue, Address",
   "reception_location": "Your Reception Venue, Address",
-  "meal_options": [
+  "meal_starter_options": [
+    {"value": "option1", "label": "First Starter Option"},
+    {"value": "option2", "label": "Second Starter Option"},
+    {"value": "option3", "label": "Third Starter Option"}
+  ],
+  "meal_main_options": [
     {"value": "option1", "label": "First Meal Option"},
     {"value": "option2", "label": "Second Meal Option"},
     {"value": "option3", "label": "Third Meal Option"}

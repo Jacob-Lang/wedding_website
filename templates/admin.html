@@ -16,7 +16,8 @@
         <tr>
             <th>Name</th>
             <th>Attending?</th>
-            <th>Meal Choice</th>
+            <th>Meal Starter Choice</th>
+            <th>Meal Main Choice</th>
             <th>Dietary Requirements</th>
         </tr>
     </thead>
@@ -27,7 +28,8 @@
             <td class="attending-{{ guest.attending }}">
                 {{ guest.attending | capitalize }}
             </td>
-            <td>{{ guest.meal }}</td>
+            <td>{{ guest.meal_starter }}</td>
+            <td>{{ guest.meal_main }}</td>
             <td>{{ guest.dietary_requirements }}</td>
         </tr>
         {% endfor %}
