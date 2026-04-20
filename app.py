@@ -33,10 +33,10 @@ class Guest(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     attending = db.Column(db.String, nullable=False)
-    meal_starter = db.Column(db.String, nullable=False)
-    meal_main = db.Column(db.String, nullable=False)
-    dietary_requirements = db.Column(db.String)
-    anything_else = db.Column(db.String)
+    meal_starter = db.Column(db.String, nullable=True)
+    meal_main = db.Column(db.String, nullable=True)
+    dietary_requirements = db.Column(db.String, nullable=True)
+    anything_else = db.Column(db.String, nullable=True)
 
 
 # Create the database file (Run this once)

@@ -17,5 +17,5 @@ deploy:
 	docker compose up -d --build
 	docker image prune -f
 
-local-build-docker:
+build:
 	docker compose up --build
