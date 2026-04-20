@@ -31,11 +31,12 @@ db = SQLAlchemy(app)
 
 class Guest(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    attending = db.Column(db.String(10), nullable=False)
-    meal_starter = db.Column(db.String(100), nullable=False)
-    meal_main = db.Column(db.String(100), nullable=False)
-    dietary_requirements = db.Column(db.String(100))
+    name = db.Column(db.String, nullable=False)
+    attending = db.Column(db.String, nullable=False)
+    meal_starter = db.Column(db.String, nullable=False)
+    meal_main = db.Column(db.String, nullable=False)
+    dietary_requirements = db.Column(db.String)
+    anything_else = db.Column(db.String)
 
 
 # Create the database file (Run this once)
@@ -101,6 +102,7 @@ def rsvp():
             meal_starter=request.form.get("meal_starter"),
             meal_main=request.form.get("meal_main"),
             dietary_requirements=request.form.get("dietary_requirements"),
+            anything_else=request.form.get("anything_else"),
         )
         db.session.add(new_guest)
         db.session.commit()
@@ -133,7 +135,14 @@ def export_csv():
 
     # 4. Write the header row
     writer.writerow(
-        ["Name", "Attending", "Meal Starter", "Meal Main", "Dietary Requirements"]
+        [
+            "Name",
+            "Attending",
+            "Meal Starter",
+            "Meal Main",
+            "Dietary Requirements",
+            "Anything Else",
+        ]
     )
 
     # 5. Write the data rows
@@ -145,6 +154,7 @@ def export_csv():
                 guest.meal_starter,
                 guest.meal_main,
                 guest.dietary_requirements,
+                guest.anything_else,
             ]
         )
 
