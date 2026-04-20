@@ -21,13 +21,13 @@
     {% for option in wedding.meal_starter_options %}
     <label><input type="radio" name="meal_starter" value="{{ option.value }}"> {{ option.label }}</label><br>
     {% endfor %}
-    <label><input type="radio" name="meal_starter" value="None" required> None</label><br>
+    <label><input type="radio" name="meal_starter" value="None"> None</label><br>
 
     <label>Main Course Preference</label><br>
     {% for option in wedding.meal_main_options %}
     <label><input type="radio" name="meal_main" value="{{ option.value }}"> {{ option.label }}</label><br>
     {% endfor %}
-    <label><input type="radio" name="meal_main" value="None" required> None</label><br>
+    <label><input type="radio" name="meal_main" value="None"> None</label><br>
 
     <label for="dietary_requirements">Dietary requirements</label><br>
     <input type="text" id="dietary_requirements" name="dietary_requirements" placeholder="None"><br>
