@@ -5,11 +5,11 @@
 <p>Please fill in the form separately for everyone in your party.</p>
 
 <form method="POST">
-    <label for="name">Your Full Name</label><br>
+    <h3><label for="name">Your Full Name</label></h3>
     <input type="text" id="name" name="name" required>
     <br>
 
-    <label for="attending">Will you be attending?</label><br>
+    <h3><label for="attending">Will you be attending?</label></h3>
     <select id="attending" name="attending">
         <option value="yes">Yes, definitely!</option>
         <option value="no">Sadly, no.</option>
@@ -17,22 +17,22 @@
     <br>
 
 
-    <label>Starter Preference</label><br>
+    <h3><label for="meal_starter">Starter Preference</label></h3>
     {% for option in wedding.meal_starter_options %}
     <label><input type="radio" name="meal_starter" value="{{ option.value }}"> {{ option.label }}</label><br>
     {% endfor %}
     <label><input type="radio" name="meal_starter" value="None"> None</label><br>
 
-    <label>Main Course Preference</label><br>
+    <h3><label for="meal_main">Main Course Preference</label></h3>
     {% for option in wedding.meal_main_options %}
     <label><input type="radio" name="meal_main" value="{{ option.value }}"> {{ option.label }}</label><br>
     {% endfor %}
     <label><input type="radio" name="meal_main" value="None"> None</label><br>
 
-    <label for="dietary_requirements">Dietary requirements</label><br>
+    <h3><label for="dietary_requirements">Dietary requirements</label></h3>
     <input type="text" id="dietary_requirements" name="dietary_requirements" placeholder="None"><br>
 
-    <label for="anything_else">Anything else we should know or forgot to ask</label><br>
+    <h3><label for="anything_else">Anything else we should know or forgot to ask</label></h3>
     <input type="text" id="anything_else" name="anything_else" placeholder="None"><br>
     <br>
     <button type="submit" class="button">Submit Response</button>
