@@ -4,27 +4,26 @@
 <h2>The Details</h2>
 <p>We can't wait to celebrate with you! Please let us know if you can make it.</p>
 
-<p><h3>Date:</h3>  {{ wedding.wedding_date }}</p>
+<h3>Date:</h3>
+<p>{{ wedding.wedding_date }}</p>
 
-<p>
 <h3>Location:</h3>
 <ul>
     <li><strong>Ceremony:</strong> {{ wedding.ceremony_location }}</li>
     <li><strong>Reception:</strong> {{ wedding.reception_location }}</li>
 </ul>
-</p>
 
-<p>
+
 <h3>Schedule:</h3>
 <ul>
 {% for event in wedding.schedule %}
     <li><strong>{{ event.time }}:</strong> {{ event.description }}</li>
 {% endfor %}
 </ul>
-</p>
 
+
+<h3>Additional info:</h3>
 <p>
-<h3>Additional info:</h3><br>
 {{ wedding.additional_info }}
 </p>
 
