@@ -31,10 +31,12 @@ db = SQLAlchemy(app)
 
 class Guest(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    attending = db.Column(db.String(10), nullable=False)
-    meal = db.Column(db.String(100), nullable=False)
-    dietary_requirements = db.Column(db.String(100))
+    name = db.Column(db.String, nullable=False)
+    attending = db.Column(db.String, nullable=False)
+    meal_starter = db.Column(db.String, nullable=False)
+    meal_main = db.Column(db.String, nullable=False)
+    dietary_requirements = db.Column(db.String)
+    anything_else = db.Column(db.String)
 
 
 # Create the database file (Run this once)
@@ -97,12 +99,14 @@ def rsvp():
         new_guest = Guest(
             name=request.form.get("name"),
             attending=request.form.get("attending"),
-            meal=request.form.get("meal"),
+            meal_starter=request.form.get("meal_starter"),
+            meal_main=request.form.get("meal_main"),
             dietary_requirements=request.form.get("dietary_requirements"),
+            anything_else=request.form.get("anything_else"),
         )
         db.session.add(new_guest)
         db.session.commit()
-        return "<h1>Thanks for RSVPing!</h1><a href='/'>Back Home</a>"
+        return render_template("post_rsvp.html")
 
     return render_template("rsvp.html")
 
@@ -130,11 +134,29 @@ def export_csv():
     writer = csv.writer(output)
 
     # 4. Write the header row
-    writer.writerow(["Name", "Attending", "Meal", "Song Request"])
+    writer.writerow(
+        [
+            "Name",
+            "Attending",
+            "Meal Starter",
+            "Meal Main",
+            "Dietary Requirements",
+            "Anything Else",
+        ]
+    )
 
     # 5. Write the data rows
     for guest in guests:
-        writer.writerow([guest.name, guest.attending, guest.meal, guest.song])
+        writer.writerow(
+            [
+                guest.name,
+                guest.attending,
+                guest.meal_starter,
+                guest.meal_main,
+                guest.dietary_requirements,
+                guest.anything_else,
+            ]
+        )
 
     # 6. Create the response
     response = make_response(output.getvalue())

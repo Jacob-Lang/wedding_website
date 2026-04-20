@@ -4,12 +4,6 @@
 <p>Please come to our wedding!</p>
 <p class="date-location">{{ wedding.header_date_location }}</p>
 
-<img src="{{ url_for('static', filename='images/couple.jpeg') }}">
-
-<!-- add link to details page here -->
-<a href="{{ url_for('details') }}">The Details</a>
-
-<!-- add link to rsvp page here -->
-<a href="{{ url_for('rsvp') }}">RSVP</a>
+<img src="{{ url_for('static', filename='images/main.jpeg') }}" alt="Main photo">
 
 {% endblock %}

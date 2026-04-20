@@ -17,9 +17,5 @@ deploy:
 	docker compose up -d --build
 	docker image prune -f
 
-# Run locally using uv (for development)
-local-build-flask:
-	uv run app.py
-
 local-build-docker:
 	docker compose up --build
