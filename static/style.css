@@ -46,6 +46,7 @@ h1, h2, h3 {
     text-transform: lowercase;
     color: var(--accent-blue);
     margin-bottom: 0.5rem;
+    font-style: italic;
 }
 
 h1 {
