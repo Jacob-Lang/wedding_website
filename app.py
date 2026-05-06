@@ -1,5 +1,6 @@
 import os
 import json
+import markdown
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template, request, redirect, url_for, session
@@ -13,6 +14,13 @@ with open("wedding_config.json") as f:
     WEDDING_CONFIG = json.load(f)
 
 app = Flask(__name__)
+
+
+@app.template_filter("render_markdown")
+def render_markdown(filename):
+    path = os.path.join(app.root_path, "content", filename)
+    with open(path) as f:
+        return markdown.markdown(f.read())
 
 
 @app.context_processor

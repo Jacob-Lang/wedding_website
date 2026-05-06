@@ -18,5 +18,5 @@ wheels/
 
 data/
 
-# Wedding config (contains real wedding details — not for public repo)
+content/details.md
 wedding_config.json

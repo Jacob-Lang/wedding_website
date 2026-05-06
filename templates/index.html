@@ -1,8 +1,19 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<p>Please come to our wedding!</p>
-<p class="date-location">{{ wedding.header_date_location }}</p>
+<p>Please join us to celebrate our wedding on {{ wedding.wedding_date }}. We can't wait!</p>
+
+<h3>Date/time:</h3>
+<p>{{ wedding.wedding_date }} from {{ wedding.wedding_start_time }}</p>
+
+<h3>Location:</h3>
+<ul>
+    <li><strong>Ceremony:</strong> {{ wedding.ceremony_location }}</li>
+    <li><strong>Reception:</strong> {{ wedding.reception_location }}</li>
+</ul>
+
+<p>Please navigate to the <a href="{{ url_for('details') }}"><i>details</i></a> tab for a rundown of the day and important information.</p>
+<p>Please use the <a href="{{ url_for('rsvp') }}"><i>rsvp</i></a> tab to confirm that you're coming and select your menu.</p>
 
 <img src="{{ url_for('static', filename='images/main.jpeg') }}" alt="Main photo">
 
